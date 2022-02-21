@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
+
 	    Car car1 = new Car("Toyota",2000,100);
 
 
@@ -18,11 +19,24 @@ public class Main {
 
         Vehicle[] vehicles = {car1,car2,car3,car4};
 
-        int[] numbers = {5,9453,10,931};
-        Arrays.sort(numbers);
-        System.out.println(Arrays.toString(numbers));
-        
+        Vehicle theCar = findTheCar(vehicles);
 
+        System.out.println(theCar);
 
+    }
+
+    static Vehicle findTheCar(Vehicle[] vehicles) {
+        Vehicle theCar = null;
+        for (Vehicle vehicle : vehicles) {
+            if (theCar == null) {
+                theCar = vehicle;
+                continue;
+            }
+
+            if (theCar.getCounter() < vehicle.getCounter()) {
+                theCar = vehicle;
+            }
+        }
+        return theCar;
     }
 }
